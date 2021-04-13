@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="todo.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.1.0/main.min.js"></script>
+
+  <script>
+     function dayofWeek(day) {
+    if(day ==="Thứ hai") return 1;
+    if(day ==="Thứ ba") return 2;
+    if(day ==="Thứ tư") return 3;
+    if(day ==="Thứ năm") return 4;
+    if(day ==="Thứ sáu") return 5;
+    if(day ==="Thứ bảy") return 6;
+    if(day ==="Chủ nhật") return 0;
+    
+    
+
+  }
+
+       
+       document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      height: 'auto',
+      width: 'auto',
+      contentHeight: 'auto',
+      headerToolbar: false,
+      firstDay: 1,
+      slotDuration: '00:50:00',
+      allDaySlot: false,
+      slotMinTime: '07:00:00',
+      slotMaxTime: '20:50:00',
+      // dayHeaders: false,
+      // titleFormat: 'dddd',
+
+       initialView: 'timeGridWeek',
+      // headerToolbar: {
+      //   left: 'prev,next today',
+      //   right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      // },
+      
+      dayHeaderFormat: {
+        weekday: 'long',
+      },
+      slotLabelFormat: {
+        hour: 'numeric',
+        minute: '2-digit',
+        omitZeroMinute: true,
+      },
+
+      events: [
+    
+        {
+          title: 'Mạng máy tính PM305-G2',
+          daysOfWeek: [dayofWeek("Thứ hai")],
+          startTime: '10:00',
+          endTime: '13:00',
+        },
+       {
+         title: 'Cơ sở dữ liệu INT2211 3 308G2',
+         daysOfWeek: [2],
+         startTime: '15:00',
+         endTime: '17:00',
+       },
+       {
+          title: 'Mạng máy tính PM305-G2',
+          daysOfWeek: [dayofWeek("Thứ hai")],
+          startTime: '15:00',
+          endTime: '17:00',
+        },
+       
+      ],
+      eventBackgroundColor: "#a11e12",
+        eventBorderColor: "#ed6a5e",
+      
+    });
+
+    calendar.render();
+  });
+
+
+  </script>
+</head>
+
+<body>
+  <h3>Tra cứu thời khoá biểu K64CF</h3>
+  <div class="todo-grid-parent">
+
+    <div>
+      <div class="todo-input todo-block">
+        <span>Môn học: </span>
+        <input type="text" placeholder="Nhập môn học mới">
+        <span>Nhập ngày: </span>
+        <input type="text" placeholder="Nhập ngày" list="categoryList">
+        <datalist id="categoryList">
+          <option value="Thứ hai"></option>
+          <option value="Thứ ba"></option>
+          <option value="Thứ tư"></option>
+          <option value="Thứ năm"></option>
+          <option value="Thứ sáu"></option>
+          <option value="Thứ bảy"></option>
+          <option value="Chủ nhật"></option>
+
+        </datalist>
+        <span>Giờ bắt đầu:</span>
+        <input type="time" id="timeInput">
+        <span>Giờ kết thúc:</span>
+        <input type="time" id="timeInput">
+        <span></span>
+        <button id="addBtn">Thêm!</button>
+        <span></span>
+        
+      </div>
+
+      <table id="todoTable" class=" todo-block">
+        <tr>
+          <td></td>
+          <td>Date</td>
+          <td>Time</td>
+          <td>to-do</td>
+          <td>
+            <select id="categoryFilter">
+            </select>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="todo-calendar  todo-block">
+      <div id='calendar'></div>
+    </div>
+
+  </div> <!-- class="todo-grid-parent" -->
+
+  <div class="todo-overlay" id="todo-overlay">
+    <div class="todo-modal" id="todo-modal">
+      <div class="todo-input todo-block">
+        <span>To-do: </span>
+        <input type="text" placeholder="Enter new to-do" id="todo-edit-todo">
+        <span>Category: </span>
+        <input type="text" placeholder="Enter category" list="categoryList"  id="todo-edit-category">
+        <datalist id="categoryList">
+          <option value="Personal"></option>
+          <option value="Work"></option>
+        </datalist>
+        <span>Date:</span>
+        <input type="date" id="todo-edit-date">
+        <span>Time:</span>
+        <input type="time" id="todo-edit-time">
+        <span></span>
+        <button id="changeBtn">Save Change</button>
+      </div>
+    </div>
+    <div class="todo-modal-close-btn" id="todo-modal-close-btn">X</div>
+  </div>
+  
+  
+</body>
+
+</html>

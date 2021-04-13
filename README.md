@@ -1,7 +1,11 @@
-# BTL-CSDL
-Bài tập lớn môn CSDL - thầy Lê Hồng Hải
-Mô tả:
-timeTable.html - màn hình trang TKB
-contact.html - trang liên hệ
-base.css - file css chung cho tất cả các file
-contact.css - file css cho trang liên hệ
+
+# FullCalendar [![Build Status](https://travis-ci.com/fullcalendar/fullcalendar.svg?branch=master)](https://travis-ci.com/fullcalendar/fullcalendar)
+
+A full-sized drag & drop JavaScript event calendar
+
+- [Project website and demos](http://fullcalendar.io/)
+- [Documentation](http://fullcalendar.io/docs)
+- [Support](http://fullcalendar.io/support)
+- [Contributing](CONTRIBUTING.md)
+- [Changelog](CHANGELOG.md)
+- [License](LICENSE.txt)

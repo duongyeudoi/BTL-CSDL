@@ -1,0 +1,149 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+
+.strike {
+  text-decoration: line-through;
+}
+
+td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.todo-input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 1rem;
+}
+#todoTable{
+  margin-top: 1rem;
+}
+
+input {
+  color: #a11e12;  
+}
+:-ms-input-placeholder {
+  color: #a11e12;  
+}
+::placeholder {
+  color: #a11e12;  
+}
+:-webkit-input-placeholder {
+  color: #a11e12;  
+}
+
+h3 {
+  color: #a11e12;
+  padding: ;
+}
+
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+.calendar{font-size: 12px !important:}
+
+
+ .todo-block {
+   border: 1px solid #ff8e72;
+   border-radius: 20px;
+   padding: 1rem;
+   color: #a11e12;
+ }
+ @media  screen and (max-width: 767px) {
+   #todoTable, #calendar {
+     margin-top: 1rem;
+   }
+   
+ }
+@media screen and (min-width: 768px) {
+  .todo-grid-parent {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    column-gap: 1rem;
+  }
+  #calendar {
+    position: sticky;
+    top: 0;
+  }
+  .search-input {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+  }
+  .search-input input[type='text'] {
+    border: 1px solid #ff8e72;
+    border-radius: 10px;
+    width: 80vw;
+    padding: 7px;
+    margin-right: 10px;
+
+
+  }
+  
+}
+
+.todo-overlay {
+  width: 100vw;
+  height: 100vh;
+  background-color: #ddd; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(-100vw);
+  transition: all 250ms;
+  z-index: 2;
+}
+
+.todo-modal {
+  min-width: 50vw;
+  height: 50vh;
+  background-color: #ffd6cc;
+}
+
+.todo-modal-close-btn {
+  background-color: red;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+
+
+}
+
+.slideIntoView {
+  transform: translateX(0);
+  transition: all 650ms;
+}
+
+#todoTable tr:nth-child(even) {
+  background-color: #ffd6cc;
+}
+
+button {
+  background-color: #ffd6cc;
+  color: #a11e12;
+  border: 1px solid;
+}
+
+button:active {
+  border: 1px inset #ff8e72;
+}
+
+button:hover {
+  border: 1px inset #ffad99;
+}
+

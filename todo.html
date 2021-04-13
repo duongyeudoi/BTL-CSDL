@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="todo.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js'></script>
+    
+    
+    
+</head>
+<body>
+  <h3>Tra cứu thời khoá biểu K64CF</h3>
+  
+  <div class='search-input'>
+    <input type='text' placeholder='Nhập mã số sinh viên tại đây' class="">
+    <button id='searchBtn'>Xác nhận</button>
+  </div>
+  <div class='todo-grid-parent'>
+    <div>
+      <div class='todo-input todo-block'>
+        <span>Môn học: </span>
+        <input type="text" placeholder="Nhập môn học mới">
+        <span>Nhập ngày:</span>
+        <input type="text" placeholder="Chọn ngày" list="categoryList">
+        <span>Địa điểm:</span>
+        <input type="text" placeholder="Nhập địa điểm">
+
+        <datalist id="categoryList">
+          <option value="Thứ hai"></option>
+          <option value="Thứ ba"></option>
+          <option value="Thứ tư"></option>
+          <option value="Thứ năm"></option>
+          <option value="Thứ sáu"></option>
+          <option value="Thứ bảy"></option>
+          <option value="Chủ nhật"></option>
+        </datalist>
+        <span>Giờ bắt đầu:</span>
+        <input type="time" id="startInput">
+        <span>Giờ kết thúc:</span>
+        <input type="time" id="endInput">
+        <span></span>
+        <button id="addBtn">Thêm!</button>
+        <span></span>
+
+
+      </div>
+      <table id="todoTable" class='todo-block'>
+        <tr>
+          <td>Chọn</td>
+          <td>Môn học</td>
+          <td>Địa điểm</td>
+          <td>Thời gian</td>
+          <td>Thứ</td>
+          <td>Xoá</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="todo-calendar  todo-block">
+      <div id='calendar'></div>
+    </div>
+
+  </div>
+  
+  <div class='todo-overlay' id='todo-overlay'>
+    <div class='todo-modal' id='todo-modal'>
+      <div>
+        <div class='todo-input todo-block'>
+          <span>Môn học: </span>
+          <input type="text" placeholder="Nhập môn học mới" id='todo-edit-todo'>
+          <span>Nhập ngày:</span>
+          <input type="text" placeholder="Chọn ngày" list="categoryList" id='todo-edit-category'>
+          <span>Địa điểm:</span>
+          <input type="text" placeholder="Nhập địa điểm" id='todo-edit-location'>
+  
+          <datalist id="categoryList">
+            <option value="Thứ hai"></option>
+            <option value="Thứ ba"></option>
+            <option value="Thứ tư"></option>
+            <option value="Thứ năm"></option>
+            <option value="Thứ sáu"></option>
+            <option value="Thứ bảy"></option>
+            <option value="Chủ nhật"></option>
+          </datalist>
+          <span>Giờ bắt đầu:</span>
+          <input type="time" id="todo-edit-start">
+          <span>Giờ kết thúc:</span>
+          <input type="time" id="todo-edit-end">
+          <span></span>
+          <button id="changeBtn">Lưu!</button>
+          <span></span>
+  
+  
+        </div>
+        
+      </div>
+    </div>
+    <div class='todo-modal-close-btn' id='todo-modal-close-btn'>
+      X
+    </div>
+
+  </div>
+
+ 
+  <script src='todo.js'></script>
+ 
+</body>
+</html>

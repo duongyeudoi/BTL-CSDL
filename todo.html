@@ -17,18 +17,22 @@
   <h3>Tra cứu thời khoá biểu K64CF</h3>
   
   <div class='search-input'>
-    <input type='text' placeholder='Nhập mã số sinh viên tại đây' class="">
+    <input type='text' placeholder='Nhập mã số sinh viên tại đây'  name="name">
     <button id='searchBtn'>Xác nhận</button>
+  </div>
+  <div class='studentInfo'>
+    <!-- <input type="time" id="startTime">
+        <input type='time' id='endTime'> -->
   </div>
   <div class='todo-grid-parent'>
     <div>
       <div class='todo-input todo-block'>
         <span>Môn học: </span>
-        <input type="text" placeholder="Nhập môn học mới">
+        <input type="text" placeholder="Nhập môn học mới" id='subject'>
         <span>Nhập ngày:</span>
-        <input type="text" placeholder="Chọn ngày" list="categoryList">
+        <input type="text" placeholder="Chọn ngày" list="categoryList" id='day'>
         <span>Địa điểm:</span>
-        <input type="text" placeholder="Nhập địa điểm">
+        <input type="text" placeholder="Nhập địa điểm" id='location'>
 
         <datalist id="categoryList">
           <option value="Thứ hai"></option>

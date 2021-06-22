@@ -2,6 +2,7 @@ onload = todoMain;
 
 function todoMain(){
   let inputElem,
+      inputID,
       inputElem2,
       inputElem3,
       startInput,
@@ -18,12 +19,14 @@ function todoMain(){
   addListeners();
   initCalendar();
   load();
+  // handleData();
   renderRows();
 
   function getElements(){
-    inputElem = document.getElementsByTagName("input")[0];
-    inputElem2 = document.getElementsByTagName("input")[1];
-    inputElem3 = document.getElementsByTagName("input")[2];
+    inputID = document.getElementsByTagName('input')[0];
+    inputElem = document.getElementsByTagName("input")[3];
+    inputElem2 = document.getElementsByTagName("input")[4];
+    inputElem3 = document.getElementsByTagName("input")[5];
     startInput = document.getElementById('startInput');
     endInput = document.getElementById('endInput');
     button = document.getElementById("addBtn");
@@ -41,6 +44,8 @@ function todoMain(){
 
     // document.getElementById('todoTable').addEventListener("click", onTableClicked, false);
     document.getElementById('todo-modal-close-btn').addEventListener("click", closeEditModalBox, false);
+        searchBtn.addEventListener('click',handleData,false);
+
 
     changeBtn.addEventListener("click", commitEdit, false);
     // searchBtn.addEventListener("click", searchSub, false)
@@ -50,6 +55,102 @@ function todoMain(){
 
 
   }
+  // function myFunction(val) {
+  //   let link = 'https://db-homework-1.herokuapp.com/schedule/get_by_student_id?studentId=';
+  //   link += val;
+  //   return link;
+  // }
+  
+
+    const getTodos = async () => {
+      let MSSV = inputID.value;
+      inputID.value = "";
+      let link = 'https://db-homework-1.herokuapp.com/schedule/get_by_student_id?studentId=';
+      link += MSSV;
+     
+  const response = await fetch(link);
+  const data  = await response.json();
+  return data;
+  
+  };
+
+  function handleData() {
+    
+getTodos().then(function(data) {
+  console.log(data);
+  const result = document.querySelector('.studentInfo');
+  let classes = data.classes;
+  
+  for(let i = 0; i < classes.length; i++) {
+    const Subdetail = classes[i].name + ' ' + classes[i].code + ' ' + classes[i].lecturer;
+    let startTime1 = classes[i].startPeriod + 6;
+    let endTime1 = classes[i].finishPeriod + 6;
+
+    // let startTime = '';
+    // let endTime = '';
+    // if(classes[i].startperiod + 6 < 10)
+    // {
+    //   let startTime1 = classes[i].startPeriod + 6;
+    //   startTime = '0' + startTime1  + ':00';
+    // } else {
+    //   startTime = classes[i].startPeriod + 6 + ':00';
+    // }
+    // if(classes[i].finishPeriod + 6 < 10)
+    // {
+    //   let endTime1 = classes[i].finishPeriod + 6;
+    //   endTime = '0' + endTime1 + ':00';
+    // } else {
+    //   endTime = classes[i].finishPeriod + 6 + ':00';
+    // }
+    const startTime = startTime1.toString().padStart(2,'0') + ':00';
+    const endTime = endTime1.toString().padStart(2,'0') + ':00';
+     
+     
+    // document.getElementById("startTime").value = startTime;
+    //   document.getElementById("endTime").value = endTime;
+      // let startInput1 = document.getElementById('startTime');
+      // let endInput1 = document.getElementById('endTime');
+      // let startValue = startInput1.value;
+      // let endValue = endInput1.value;
+    result.innerHTML = `<input type='time' id='start' value= ${startTime}>
+    <input type='time' id='end' value= ${endTime}>
+    <h4>Họ và tên: ${data.studentName}</h4>
+    <h4>Mã số sinh viên: ${data.studentId}</h4>`;
+    let startInput1 = document.getElementById('start').value;
+    let endInput1 = document.getElementById('end').value;
+    console.log(endInput1);
+  
+    let obj = {
+      id: _uuid(),
+      todo: Subdetail,
+      day: WeekOfday(classes[i].day),
+      location:  classes[i].room ,
+      startTime: startInput1,
+      endTime: endInput1,
+      done: false,  
+    }
+    renderRow(obj);
+     
+  
+      todoList.push(obj);
+      
+  }
+  
+
+
+});
+}
+
+  function WeekOfday(day) {
+    if(day === 1) return "Thứ hai";
+    if(day === 2) return "Thứ ba";
+    if(day === 3) return "Thứ tư";
+    if(day === 4) return "Thứ năm";
+    if(day === 5) return "Thứ sáu";
+    if(day === 6) return "Thứ bảy";
+    if(day === 0) return "Chủ nhật";
+    }
+
 
   function dayofWeek(day) {
     if(day ==="Thứ hai") return 1;
